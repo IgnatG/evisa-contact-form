@@ -1,0 +1,85 @@
+# MegaLinter configuration file
+# See all available variables at https://megalinter.io/configuration/
+# and all available linters at https://megalinter.io/supported-linters/
+
+# Apply linters to this project - REPORT ONLY MODE
+APPLY_FIXES: none
+# APPLY_FIXES_EVENT: push  # Disabled - no fixes applied
+# APPLY_FIXES_MODE: commit  # Disabled - no fixes applied
+
+# Exclude specific directories and files
+FILTER_REGEX_EXCLUDE: '(\.git|node_modules|\.nyc_output|coverage|build|dist|\.vscode|\.idea|playwright-report|test-results)'
+
+# Enable specific linters for this Node.js HOF project
+ENABLE_LINTERS:
+  - ACTION_ACTIONLINT         # GitHub Actions linting
+  - BASH_SHELLCHECK          # Shell script linting
+  - CSS_STYLELINT            # CSS/SCSS linting
+  - DOCKERFILE_HADOLINT      # Dockerfile linting
+  - HTML_HTMLHINT           # HTML template linting
+  - JAVASCRIPT_ES           # JavaScript linting with ESLint
+  - JSON_JSONLINT           # JSON files linting
+  - MARKDOWN_MARKDOWNLINT   # Markdown documentation linting
+  - YAML_YAMLLINT           # YAML files linting
+  - SPELL_CSPELL            # Spell checking
+
+# JavaScript/Node.js specific configuration
+JAVASCRIPT_ES_CONFIG_FILE: .eslintrc.js
+JAVASCRIPT_ES_RULES_PATH: .
+JAVASCRIPT_DEFAULT_STYLE: standard
+
+# CSS/SCSS configuration
+CSS_STYLELINT_CONFIG_FILE: .stylelintrc.json
+CSS_STYLELINT_RULES_PATH: .
+
+# HTML configuration
+HTML_HTMLHINT_CONFIG_FILE: .htmlhintrc
+
+# Markdown configuration
+MARKDOWN_MARKDOWNLINT_CONFIG_FILE: .markdownlint.json
+MARKDOWN_MARKDOWNLINT_RULES_PATH: .
+
+# Dockerfile configuration
+DOCKERFILE_HADOLINT_ARGUMENTS: '--ignore DL3008 --ignore DL3009'
+
+# Spell checker configuration
+SPELL_CSPELL_CONFIG_FILE: .cspell.json
+
+# YAML configuration
+YAML_YAMLLINT_CONFIG_FILE: .yamllint.yml
+
+# JSON configuration
+JSON_JSONLINT_FILTER_REGEX_EXCLUDE: '(package-lock\.json)'
+
+# File extensions to check
+JAVASCRIPT_FILE_EXTENSIONS:
+  - '.js'
+  - '.mjs'
+
+CSS_FILE_EXTENSIONS:
+  - '.css'
+  - '.scss'
+  - '.sass'
+
+HTML_FILE_EXTENSIONS:
+  - '.html'
+  - '.htm'
+
+# Reporting
+REPORT_OUTPUT_FOLDER: reports
+FILEIO_REPORTER: true
+GITHUB_STATUS_REPORTER: true
+UPDATED_SOURCES_REPORTER: true
+
+# Performance
+PARALLEL: true
+LOG_LEVEL: INFO
+
+# Fix mode - DISABLED for report-only mode
+AUTO_APPLY_FIXES: false
+CLEAR_REPORT_FOLDER: true
+
+# Pre-commands for setup
+PRE_COMMANDS:
+  - command: 'npm ci'
+    cwd: 'workspace'

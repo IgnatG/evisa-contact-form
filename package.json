@@ -12,8 +12,12 @@
     "start:devcontainer": "hof-build watch --env ./.devcontainer/devcontainer.env",
     "build": "hof-build",
     "postinstall": "hof-build",
-    "test:lint": "eslint . --config ./node_modules/eslint-config-hof/default.js",
-    "test:unit": "nyc _mocha \"test/_unit/**/*.spec.js\""
+    "test:lint": "eslint . --config ./.eslintrc.js",
+    "test:lint:fix": "eslint . --config ./.eslintrc.js --fix",
+    "test:unit": "nyc _mocha \"test/_unit/**/*.spec.js\"",
+    "lint": "npm run test:lint",
+    "lint:fix": "npm run test:lint:fix",
+    "format": "npm run lint:fix"
   },
   "repository": {
     "type": "git",
