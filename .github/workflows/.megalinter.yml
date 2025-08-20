@@ -8,11 +8,7 @@ on:
   pull_request:
     branches: [master, main]
 
-env: # Report-only mode - no fixes applied
-  # Apply linter fixes configuration - DISABLED
-  # APPLY_FIXES: none # Disabled - report only
-  # APPLY_FIXES_EVENT: none # Disabled - report only  
-  # APPLY_FIXES_MODE: none # Disabled - report only
+# env block removed - no fixes applied, report-only mode configured in .mega-linter.yml
 
 concurrency:
   group: ${{ github.ref }}-${{ github.workflow }}
